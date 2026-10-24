@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>AgriGuard Rwanda</title>
+  <meta name="description" content="Climate risk alerts for Rwandan agriculture: drought, flood and storage warnings for all 30 districts.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/browser@1.10.0/build/stlite.css">
+  <style>
+    body { margin: 0; background: #ffffff; font-family: system-ui, sans-serif; }
+    #boot { padding: 48px 16px; text-align: center; color: #3f4a54; }
+    #boot h1 { font-size: 1.6rem; margin: 0 0 8px; }
+  </style>
+</head>
+<body>
+  <!-- AgriGuard runs fully in the browser with stlite (Streamlit on WebAssembly),
+       so it can be hosted for free on GitHub Pages. The same app.py also runs on a
+       normal Streamlit server: `streamlit run app.py`. -->
+  <div id="root">
+    <div id="boot">
+      <h1>🌱 AgriGuard Rwanda</h1>
+      <p>Loading the dashboard. The first visit takes about 20 seconds…</p>
+    </div>
+  </div>
+  <script type="module">
+    import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@1.10.0/build/stlite.js";
+
+    const files = [
+      "app.py",
+      "agriguard/__init__.py", "agriguard/data.py", "agriguard/weather.py",
+      "agriguard/risk.py", "agriguard/i18n.py",
+      "data/crops.csv", "data/district_crops.csv",
+      "data/rwanda_districts.geojson", "data/weather_snapshot.csv",
+    ];
+
+    mount({
+      entrypoint: "app.py",
+      requirements: ["plotly", "requests"],
+      files: Object.fromEntries(files.map((f) => [f, { url: `./${f}` }])),
+      streamlitConfig: {
+        "theme.primaryColor": "#3f9d5c",
+        "client.toolbarMode": "minimal",
+      },
+    }, document.getElementById("root"));
+  </script>
+</body>
+</html>

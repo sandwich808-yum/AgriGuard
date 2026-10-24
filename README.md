@@ -12,7 +12,7 @@ policymakers, district by district, about three risks:
 | 🌧️ **Heavy rain / flooding** | Heavy rain is forecast that can damage terraces, marshland plots and crops ready to harvest | 6-day rainfall forecast |
 | 🌽 **Post-harvest storage** | Humid, warm weeks raise mould and aflatoxin risk in stored maize, beans and other grain | Forecast humidity and temperature |
 
-🔗 **Live app:** _add your Streamlit Community Cloud link here_
+🔗 **Live app:** **https://sandwich808-yum.github.io/AgriGuard/** (first load takes about 20 seconds)
 
 <p align="center">
   <img src="docs/screenshot.jpg" alt="AgriGuard dashboard: risk map of Rwanda's 30 districts with top alerts" width="72%">
@@ -111,19 +111,25 @@ Refresh the offline weather snapshot (do this just before submitting):
 python -m agriguard.weather
 ```
 
-## Deploy (Streamlit Community Cloud, free)
+## Deployment
 
-1. Push this repository to a **public** GitHub repo.
-2. Go to [share.streamlit.io](https://share.streamlit.io), sign in with GitHub, and click **Create app**.
-3. Choose the repo, branch `main`, main file `app.py`, then **Deploy**.
-4. Paste the resulting `https://<name>.streamlit.app` link at the top of this README.
+The live app is hosted free on **GitHub Pages**. `index.html` loads
+[stlite](https://github.com/whitphx/stlite), which runs the same Streamlit `app.py` in the
+visitor's browser through WebAssembly (Pyodide). There's no server to keep running, and it
+needs no API keys or secrets. Weather is fetched live from Open-Meteo by the browser.
 
-No API keys or secrets are needed.
+To publish your own copy: push the repo to GitHub, then go to **Settings → Pages**, choose
+**Deploy from a branch**, pick `main` and `/ (root)`, and save.
+
+The same code also deploys unchanged to a normal Streamlit server. For example, on
+[Streamlit Community Cloud](https://share.streamlit.io): **Create app**, choose this repo,
+branch `main`, file `app.py`.
 
 ## Project structure
 
 ```
 app.py                     Streamlit dashboard
+index.html                 Browser-only launcher for GitHub Pages (stlite)
 agriguard/data.py          Boundaries, district centroids, crop tables
 agriguard/weather.py       Open-Meteo client + offline snapshot
 agriguard/risk.py          Risk rules, district scoring, alert text
