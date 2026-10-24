@@ -28,6 +28,9 @@ policymakers, district by district, about three risks:
   use hermetic bags, and so on).
 - **SMS alert preview**: each alert is also written as a short text message, ready for
   an SMS gateway so farmers with basic phones can receive it.
+- **Three languages: English, Français and Kinyarwanda.** The switcher at the top of the
+  sidebar translates the whole interface, including alerts, recommended actions and SMS text
+  (`agriguard/i18n.py`).
 - **Filters** by province, risk type and level, plus **CSV export** of all alerts for
   district agronomists and the Ministry of Agriculture (MINAGRI) / Rwanda Agriculture Board (RAB).
 - **Works offline for demos**: if the weather API is unreachable, the app falls back to a
@@ -118,6 +121,7 @@ app.py                     Streamlit dashboard
 agriguard/data.py          Boundaries, district centroids, crop tables
 agriguard/weather.py       Open-Meteo client + offline snapshot
 agriguard/risk.py          Risk rules, district scoring, alert text
+agriguard/i18n.py          English, French and Kinyarwanda text
 data/district_crops.csv    Crop area by district (NISR SAS format)
 data/crops.csv             Crop coefficients and storage guidance
 data/rwanda_districts.geojson   District boundaries
@@ -149,14 +153,16 @@ tests/test_risk.py         Unit tests
 - Calibrate thresholds, or train a lightweight model (for example gradient boosting), using
   historical NISR SAS yields per district and season against past weather.
 - Sector-level detail and satellite soil moisture or vegetation index (NDVI) data.
-- Kinyarwanda alert text and an SMS gateway integration (for example Africa's Talking).
+- Review of the Kinyarwanda and French text with farmers and extension officers.
+- SMS gateway integration (for example Africa's Talking).
 - Farmer subscription by district and crop.
 
 ## AI disclosure
 
 As the competition rules require, we disclose that **AI tools were used** in building this
 project. We used **Claude (Anthropic), via Claude Code**, to help write the application code,
-tests and this README, and to propose the risk-rule structure. The team reviewed, tested and
+tests and this README, to propose the risk-rule structure, and to draft the French and
+Kinyarwanda translations. The team reviewed, tested and
 adapted all generated output, chose the data sources and thresholds, and takes full
 responsibility for the submitted work.
 

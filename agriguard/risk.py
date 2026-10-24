@@ -16,6 +16,8 @@ officer in one sentence.
 
 import pandas as pd
 
+from agriguard import i18n
+
 HIGH, MODERATE = 50, 25
 
 # FAO rule of thumb: roughly 80% of rainfall is effective for crops; the rest
@@ -115,27 +117,11 @@ def assess_districts(summary: pd.DataFrame, crop_risk: pd.DataFrame) -> pd.DataF
     return df
 
 
-ACTIONS = {
-    "Drought": {
-        "High": "Irrigate now if water is available; mulch to keep soil moisture; "
-                "delay planting of water-hungry crops; prioritise drought-tolerant varieties.",
-        "Moderate": "Monitor soil moisture; plan small-scale irrigation; mulch exposed fields.",
-    },
-    "Flood": {
-        "High": "Clear drainage channels and terraces; harvest mature crops early; "
-                "move stored produce and inputs off the ground.",
-        "Moderate": "Check drainage on terraces and marshland plots; avoid fertiliser before heavy rain.",
-    },
-    "Storage": {
-        "High": "Dry grain fully before storing; use hermetic (PICS) bags; "
-                "store off the floor in ventilated stores; inspect for mould weekly.",
-        "Moderate": "Check grain moisture before storage; keep stores ventilated.",
-    },
-}
+def alerts(districts: pd.DataFrame, crop_risk: pd.DataFrame, lang: str = "en") -> pd.DataFrame:
+    """Plain-language alerts for every Moderate or High risk, most severe first.
 
-
-def alerts(districts: pd.DataFrame, crop_risk: pd.DataFrame) -> pd.DataFrame:
-    """Plain-language alerts for every Moderate or High risk, most severe first."""
+    `risk` and `level` stay as English codes for filtering and colours; the
+    `*_label`, `detail`, `action` and `sms` columns are in `lang`."""
     rows = []
     for d in districts.itertuples():
         for risk in ("Drought", "Flood", "Storage"):
@@ -145,19 +131,24 @@ def alerts(districts: pd.DataFrame, crop_risk: pd.DataFrame) -> pd.DataFrame:
                 continue
             if risk == "Drought":
                 hit = crop_risk[(crop_risk.district == d.district) & (crop_risk.drought_level != "Low")]
-                crops = ", ".join(hit.sort_values("drought_index", ascending=False).crop) or "main crops"
-                detail = (f"{d.rain_30d:.0f} mm rain in 30 days vs crop need; "
-                          f"{d.rain_fc:.0f} mm forecast this week. Crops at risk: {crops}.")
+                crops = ", ".join(i18n.crop_name(c, lang) for c in
+                                  hit.sort_values("drought_index", ascending=False).crop)
+                detail = i18n.t("detail_Drought", lang, rain=f"{d.rain_30d:.0f}", fc=f"{d.rain_fc:.0f}",
+                                crops=crops or i18n.t("main_crops", lang))
             elif risk == "Flood":
-                detail = f"Up to {d.rain_fc_max:.0f} mm/day and {d.rain_fc:.0f} mm total forecast this week."
+                detail = i18n.t("detail_Flood", lang, max=f"{d.rain_fc_max:.0f}", fc=f"{d.rain_fc:.0f}")
             else:
-                detail = (f"Forecast humidity {d.rh_fc:.0f}% at {d.temp_fc:.0f}°C: "
-                          f"high mould risk for stored maize, beans and other grain.")
+                detail = i18n.t("detail_Storage", lang, rh=f"{d.rh_fc:.0f}", temp=f"{d.temp_fc:.0f}")
+            action = i18n.action(risk, lvl, lang)
             rows.append({
                 "district": d.district, "risk": risk, "level": lvl, "index": round(idx),
-                "detail": detail, "action": ACTIONS[risk][lvl],
-                "sms": f"AgriGuard {lvl.upper()} {risk.upper()} ALERT - {d.district}: "
-                       f"{detail} Action: {ACTIONS[risk][lvl].split(';')[0]}.",
+                "risk_label": i18n.risk_name(risk, lang), "level_label": i18n.level_name(lvl, lang),
+                "detail": detail, "action": action,
+                # The SMS carries only the first, most important action.
+                "sms": i18n.t("sms", lang, level=i18n.level_name(lvl, lang).upper(),
+                              risk=i18n.risk_name(risk, lang).upper(), district=d.district,
+                              detail=detail, action=action.split(";")[0].strip()),
             })
-    df = pd.DataFrame(rows, columns=["district", "risk", "level", "index", "detail", "action", "sms"])
+    df = pd.DataFrame(rows, columns=["district", "risk", "level", "index", "risk_label",
+                                     "level_label", "detail", "action", "sms"])
     return df.sort_values("index", ascending=False).reset_index(drop=True)

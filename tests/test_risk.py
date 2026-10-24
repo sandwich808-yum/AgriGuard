@@ -71,3 +71,28 @@ def test_end_to_end_dry_district_raises_drought_alert():
     alerts = risk.alerts(districts.reset_index(), crop_risk)
     assert ((alerts.district == "Kirehe") & (alerts.risk == "Drought")).any()
     assert not (alerts.district == "Musanze").any()
+
+
+def test_every_text_has_all_three_languages():
+    from agriguard import i18n
+    tables = [i18n.TEXT, i18n.LEVELS, i18n.RISKS, i18n.PROVINCE_NAMES, i18n.CROPS]
+    for table in tables:
+        for key, entry in table.items():
+            assert set(entry) == set(i18n.LANGUAGES), key
+    for risk_levels in i18n.ACTIONS.values():
+        for entry in risk_levels.values():
+            assert set(entry) == set(i18n.LANGUAGES)
+    assert set(i18n.CROPS) == set(data.load_crops().crop)
+    assert set(i18n.PROVINCE_NAMES) == set(data.PROVINCES)
+
+
+def test_alerts_are_translated():
+    wx = _weather("Kirehe", rain=0.5, rh=60)
+    summary = risk.summarise_weather(wx)
+    crop_risk = risk.assess_crops(summary, data.load_district_crops(), data.load_crops())
+    districts = risk.assess_districts(summary, crop_risk)
+    fr = risk.alerts(districts, crop_risk, "fr").iloc[0]
+    rw = risk.alerts(districts, crop_risk, "rw").iloc[0]
+    assert fr.risk == rw.risk == "Drought"  # codes stay English
+    assert "Sécheresse".upper() in fr.sms and "Maïs" in fr.detail
+    assert "AMAPFA" in rw.sms and "Ibigori" in rw.detail
