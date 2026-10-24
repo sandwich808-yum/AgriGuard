@@ -6,3 +6,7 @@ headless = true
 
 [browser]
 gatherUsageStats = false
+
+[client]
+# Hide the developer menu and Deploy button from visitors.
+toolbarMode = "minimal"

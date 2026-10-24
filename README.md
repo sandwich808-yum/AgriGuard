@@ -14,6 +14,12 @@ policymakers, district by district, about three risks:
 
 🔗 **Live app:** _add your Streamlit Community Cloud link here_
 
+<p align="center">
+  <img src="docs/screenshot.jpg" alt="AgriGuard dashboard: risk map of Rwanda's 30 districts with top alerts" width="72%">
+  &nbsp;
+  <img src="docs/screenshot-mobile.jpg" alt="AgriGuard on a phone, with the language switcher" width="22%">
+</p>
+
 ---
 
 ## Features
@@ -165,6 +171,11 @@ tests and this README, to propose the risk-rule structure, and to draft the Fren
 Kinyarwanda translations. The team reviewed, tested and
 adapted all generated output, chose the data sources and thresholds, and takes full
 responsibility for the submitted work.
+
+## License
+
+Code: MIT (see [LICENSE](LICENSE)). Data keeps its own licence: Open-Meteo and geoBoundaries
+are CC BY 4.0, and NISR data follows NISR's terms of use.
 
 ## Team
 

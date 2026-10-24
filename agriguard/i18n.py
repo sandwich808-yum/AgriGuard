@@ -74,8 +74,6 @@ TEXT = {
     },
     "kpi_high": {"en": "Districts at high risk", "fr": "Districts à risque élevé",
                  "rw": "Uturere dufite ibyago biri hejuru"},
-    "kpi_high_help": {"en": "Any risk at High", "fr": "Au moins un risque élevé",
-                      "rw": "Nibura ibyago bimwe biri hejuru"},
     "kpi_moderate": {"en": "Districts at moderate risk", "fr": "Districts à risque modéré",
                      "rw": "Uturere dufite ibyago biri hagati"},
     "kpi_alerts": {"en": "Active alerts", "fr": "Alertes actives", "rw": "Imiburo iriho"},
@@ -222,6 +220,14 @@ TEXT = {
     "sources_title": {"en": "Data sources", "fr": "Sources des données", "rw": "Aho amakuru aturuka"},
     "crop_params": {"en": "**Crop parameters used**", "fr": "**Paramètres des cultures utilisés**",
                     "rw": "**Ibipimo by'ibihingwa byakoreshejwe**"},
+    "footer": {
+        "en": "AgriGuard Rwanda · Data: NISR, Open-Meteo, geoBoundaries, FAO · Built for the "
+              "Agricultural Productivity hackathon track",
+        "fr": "AgriGuard Rwanda · Données : NISR, Open-Meteo, geoBoundaries, FAO · Réalisé pour le "
+              "volet Productivité agricole du hackathon",
+        "rw": "AgriGuard Rwanda · Amakuru: NISR, Open-Meteo, geoBoundaries, FAO · Yakorewe "
+              "irushanwa (hackathon) mu cyiciro cy'Umusaruro w'Ubuhinzi",
+    },
     # ---------------------------------------------------------------- alert text
     "detail_Drought": {
         "en": "{rain} mm rain in 30 days vs crop need; {fc} mm forecast this week. Crops at risk: {crops}.",

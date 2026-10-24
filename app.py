@@ -24,6 +24,16 @@ st.markdown("""
   .alert-card small {opacity:0.8;}
   .sms {font-family:ui-monospace,monospace; font-size:0.85rem; padding:10px 12px;
         border-radius:10px; background:rgba(63,157,92,0.12);}
+  .kpis {display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+         gap:12px; margin:0.4rem 0 1rem;}
+  .kpi {padding:12px 14px; border-radius:10px; background:rgba(127,127,127,0.07);
+        border-top:4px solid var(--c);}
+  .kpi .v {font-size:1.9rem; font-weight:700; line-height:1.15;}
+  .kpi .l {font-size:0.85rem; opacity:0.75;}
+  @media (max-width: 640px) {
+    h1 {font-size:2rem !important;}
+    .kpi .v {font-size:1.5rem;}
+  }
 </style>
 """, unsafe_allow_html=True)
 
@@ -60,9 +70,13 @@ def load_live(districts: pd.DataFrame):
     return weather.load_weather(districts)
 
 
-# Language comes first so every label below can use it.
-lang = st.sidebar.selectbox("🌐 Language · Langue · Ururimi", list(i18n.LANGUAGES),
-                            format_func=i18n.LANGUAGES.get, key="lang")
+# Language comes first so every label below can use it. It sits at the top of
+# the page rather than in the sidebar, which is collapsed on phones.
+head_title, head_lang = st.columns([3, 2], vertical_alignment="center")
+lang = head_lang.segmented_control("🌐 Language · Langue · Ururimi", list(i18n.LANGUAGES),
+                                   format_func=i18n.LANGUAGES.get, default="en", key="lang")
+lang = lang or "en"  # clicking the active option deselects it
+head_title.title("🌱 AgriGuard Rwanda")
 
 
 def tr(key: str, **kwargs) -> str:
@@ -82,7 +96,7 @@ all_alerts = risk.alerts(dist_risk, crop_risk, lang)
 
 # ---------------------------------------------------------------- sidebar
 with st.sidebar:
-    st.title("🌱 AgriGuard")
+    st.header("🌱 AgriGuard")
     st.caption(tr("tagline"))
     layer = st.radio(tr("layer_label"), list(LAYERS), help=tr("layer_help"),
                      format_func=lambda r: i18n.risk_name(r, lang))
@@ -100,18 +114,22 @@ view = dist_risk[dist_risk.province.isin(provinces)] if provinces else dist_risk
 view_alerts = all_alerts[all_alerts.district.isin(view.district)]
 
 # ---------------------------------------------------------------- header
-st.title("AgriGuard Rwanda")
 st.markdown(tr("intro"))
 if wx_source != "live":
     st.warning(tr("api_down"), icon="📡")
 if sample_crops:
     st.info(tr("sample_notice"), icon="ℹ️")
 
-k1, k2, k3, k4 = st.columns(4)
-k1.metric(tr("kpi_high"), int((view.overall_level == "High").sum()), help=tr("kpi_high_help"))
-k2.metric(tr("kpi_moderate"), int((view.overall_level == "Moderate").sum()))
-k3.metric(tr("kpi_alerts"), len(view_alerts))
-k4.metric(tr("kpi_rain"), f"{view.rain_30d.mean():.0f} mm")
+# KPI cards as a CSS grid: four across on desktop, two by two on phones.
+kpis = [
+    (tr("kpi_high"), int((view.overall_level == "High").sum()), LEVEL_COLORS["High"]),
+    (tr("kpi_moderate"), int((view.overall_level == "Moderate").sum()), LEVEL_COLORS["Moderate"]),
+    (tr("kpi_alerts"), len(view_alerts), "#2f6fab"),
+    (tr("kpi_rain"), f"{view.rain_30d.mean():.0f} mm", "#9cc3e6"),
+]
+st.markdown('<div class="kpis">' + "".join(
+    f'<div class="kpi" style="--c:{c}"><div class="v">{v}</div><div class="l">{label}</div></div>'
+    for label, v, c in kpis) + "</div>", unsafe_allow_html=True)
 
 tab_map, tab_alerts, tab_method = st.tabs([tr("tab_map"), tr("tab_alerts"), tr("tab_method")])
 
@@ -188,7 +206,8 @@ with tab_map:
         bars.add_vline(x=pd.Timestamp(as_of).timestamp() * 1000, line_dash="dot", line_color="gray",
                        annotation_text=tr("today"), annotation_position="top")
         bars.update_layout(height=320, margin=dict(l=0, r=0, t=28, b=0), hovermode="x unified",
-                           legend=dict(orientation="h", y=-0.15), yaxis_title=tr("mm_day"))
+                           legend=dict(orientation="h", y=-0.15), yaxis_title=tr("mm_day"),
+                           xaxis=dict(tickformat="%d/%m", hoverformat="%d/%m/%Y"))
         st.markdown(tr("rain_title"))
         st.plotly_chart(bars, width="stretch")
 
@@ -270,3 +289,7 @@ with tab_method:
 """)
     st.markdown(tr("crop_params"))
     st.dataframe(crops, hide_index=True, width="stretch")
+
+# ---------------------------------------------------------------- footer
+st.divider()
+st.caption(tr("footer"))
