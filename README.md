@@ -185,5 +185,5 @@ are CC BY 4.0, and NISR data follows NISR's terms of use.
 
 ## Team
 
-- **Mhad Magdy**: _university, role_
-- **Mohammed Ismail**: _university, role_
+- **Mhad Magdy**: Team Leader
+- **Mohammed Ismail**: Team Member
