@@ -1,0 +1,11 @@
+crop,kc_mid,drought_tolerant,storage_sensitive,storage_note
+Maize,1.20,False,True,"Dry cobs to below 13% moisture before storing; high humidity drives Aspergillus mould and aflatoxin."
+Beans,1.15,False,True,"Store dry grain in hermetic (PICS) bags; damp beans attract bruchid weevils and mould."
+Irish potato,1.15,False,False,"Keep in dark, ventilated stores; not grain-stored."
+Cassava,0.85,True,False,"Fresh roots spoil in 2-3 days; dry chips fully before storage."
+Sorghum,1.00,True,True,"Dry to below 12% moisture; humid storage causes grain mould."
+Rice,1.20,False,True,"Dry paddy to 14% moisture before storage or milling."
+Banana,1.10,False,False,"Perishable; market quickly rather than store."
+Sweet potato,1.15,True,False,"Cure roots before storage; perishable."
+Wheat,1.15,False,True,"Dry to below 13% moisture; humid storage causes mould."
+Soybean,1.15,False,True,"Dry to below 12% moisture; store in hermetic bags."

@@ -1,0 +1,123 @@
+district,crop,area,source
+Bugesera,Maize,30,SAMPLE - replace with NISR SAS
+Bugesera,Beans,30,SAMPLE - replace with NISR SAS
+Bugesera,Cassava,20,SAMPLE - replace with NISR SAS
+Bugesera,Sorghum,10,SAMPLE - replace with NISR SAS
+Bugesera,Rice,10,SAMPLE - replace with NISR SAS
+Burera,Irish potato,40,SAMPLE - replace with NISR SAS
+Burera,Beans,30,SAMPLE - replace with NISR SAS
+Burera,Maize,20,SAMPLE - replace with NISR SAS
+Burera,Wheat,10,SAMPLE - replace with NISR SAS
+Gakenke,Beans,35,SAMPLE - replace with NISR SAS
+Gakenke,Maize,25,SAMPLE - replace with NISR SAS
+Gakenke,Irish potato,20,SAMPLE - replace with NISR SAS
+Gakenke,Banana,20,SAMPLE - replace with NISR SAS
+Gasabo,Beans,35,SAMPLE - replace with NISR SAS
+Gasabo,Maize,30,SAMPLE - replace with NISR SAS
+Gasabo,Banana,20,SAMPLE - replace with NISR SAS
+Gasabo,Cassava,15,SAMPLE - replace with NISR SAS
+Gatsibo,Maize,35,SAMPLE - replace with NISR SAS
+Gatsibo,Beans,30,SAMPLE - replace with NISR SAS
+Gatsibo,Banana,15,SAMPLE - replace with NISR SAS
+Gatsibo,Sorghum,10,SAMPLE - replace with NISR SAS
+Gatsibo,Rice,10,SAMPLE - replace with NISR SAS
+Gicumbi,Beans,35,SAMPLE - replace with NISR SAS
+Gicumbi,Irish potato,25,SAMPLE - replace with NISR SAS
+Gicumbi,Maize,25,SAMPLE - replace with NISR SAS
+Gicumbi,Sorghum,15,SAMPLE - replace with NISR SAS
+Gisagara,Cassava,30,SAMPLE - replace with NISR SAS
+Gisagara,Beans,30,SAMPLE - replace with NISR SAS
+Gisagara,Maize,20,SAMPLE - replace with NISR SAS
+Gisagara,Rice,10,SAMPLE - replace with NISR SAS
+Gisagara,Sweet potato,10,SAMPLE - replace with NISR SAS
+Huye,Beans,35,SAMPLE - replace with NISR SAS
+Huye,Cassava,25,SAMPLE - replace with NISR SAS
+Huye,Maize,20,SAMPLE - replace with NISR SAS
+Huye,Sweet potato,20,SAMPLE - replace with NISR SAS
+Kamonyi,Beans,35,SAMPLE - replace with NISR SAS
+Kamonyi,Cassava,25,SAMPLE - replace with NISR SAS
+Kamonyi,Maize,25,SAMPLE - replace with NISR SAS
+Kamonyi,Soybean,15,SAMPLE - replace with NISR SAS
+Karongi,Beans,35,SAMPLE - replace with NISR SAS
+Karongi,Banana,25,SAMPLE - replace with NISR SAS
+Karongi,Maize,20,SAMPLE - replace with NISR SAS
+Karongi,Irish potato,20,SAMPLE - replace with NISR SAS
+Kayonza,Maize,35,SAMPLE - replace with NISR SAS
+Kayonza,Beans,30,SAMPLE - replace with NISR SAS
+Kayonza,Banana,20,SAMPLE - replace with NISR SAS
+Kayonza,Sorghum,15,SAMPLE - replace with NISR SAS
+Kicukiro,Beans,40,SAMPLE - replace with NISR SAS
+Kicukiro,Maize,30,SAMPLE - replace with NISR SAS
+Kicukiro,Cassava,30,SAMPLE - replace with NISR SAS
+Kirehe,Maize,35,SAMPLE - replace with NISR SAS
+Kirehe,Beans,30,SAMPLE - replace with NISR SAS
+Kirehe,Banana,20,SAMPLE - replace with NISR SAS
+Kirehe,Rice,15,SAMPLE - replace with NISR SAS
+Muhanga,Beans,35,SAMPLE - replace with NISR SAS
+Muhanga,Maize,25,SAMPLE - replace with NISR SAS
+Muhanga,Cassava,25,SAMPLE - replace with NISR SAS
+Muhanga,Sweet potato,15,SAMPLE - replace with NISR SAS
+Musanze,Irish potato,45,SAMPLE - replace with NISR SAS
+Musanze,Beans,25,SAMPLE - replace with NISR SAS
+Musanze,Maize,20,SAMPLE - replace with NISR SAS
+Musanze,Wheat,10,SAMPLE - replace with NISR SAS
+Ngoma,Maize,30,SAMPLE - replace with NISR SAS
+Ngoma,Beans,30,SAMPLE - replace with NISR SAS
+Ngoma,Banana,25,SAMPLE - replace with NISR SAS
+Ngoma,Rice,15,SAMPLE - replace with NISR SAS
+Ngororero,Beans,35,SAMPLE - replace with NISR SAS
+Ngororero,Irish potato,25,SAMPLE - replace with NISR SAS
+Ngororero,Maize,25,SAMPLE - replace with NISR SAS
+Ngororero,Sorghum,15,SAMPLE - replace with NISR SAS
+Nyabihu,Irish potato,50,SAMPLE - replace with NISR SAS
+Nyabihu,Beans,25,SAMPLE - replace with NISR SAS
+Nyabihu,Maize,15,SAMPLE - replace with NISR SAS
+Nyabihu,Wheat,10,SAMPLE - replace with NISR SAS
+Nyagatare,Maize,40,SAMPLE - replace with NISR SAS
+Nyagatare,Beans,25,SAMPLE - replace with NISR SAS
+Nyagatare,Sorghum,15,SAMPLE - replace with NISR SAS
+Nyagatare,Rice,10,SAMPLE - replace with NISR SAS
+Nyagatare,Soybean,10,SAMPLE - replace with NISR SAS
+Nyamagabe,Irish potato,30,SAMPLE - replace with NISR SAS
+Nyamagabe,Beans,30,SAMPLE - replace with NISR SAS
+Nyamagabe,Maize,20,SAMPLE - replace with NISR SAS
+Nyamagabe,Sweet potato,20,SAMPLE - replace with NISR SAS
+Nyamasheke,Beans,35,SAMPLE - replace with NISR SAS
+Nyamasheke,Banana,25,SAMPLE - replace with NISR SAS
+Nyamasheke,Cassava,20,SAMPLE - replace with NISR SAS
+Nyamasheke,Maize,20,SAMPLE - replace with NISR SAS
+Nyanza,Beans,30,SAMPLE - replace with NISR SAS
+Nyanza,Cassava,30,SAMPLE - replace with NISR SAS
+Nyanza,Maize,25,SAMPLE - replace with NISR SAS
+Nyanza,Rice,15,SAMPLE - replace with NISR SAS
+Nyarugenge,Beans,40,SAMPLE - replace with NISR SAS
+Nyarugenge,Maize,35,SAMPLE - replace with NISR SAS
+Nyarugenge,Cassava,25,SAMPLE - replace with NISR SAS
+Nyaruguru,Irish potato,30,SAMPLE - replace with NISR SAS
+Nyaruguru,Beans,30,SAMPLE - replace with NISR SAS
+Nyaruguru,Maize,20,SAMPLE - replace with NISR SAS
+Nyaruguru,Sweet potato,20,SAMPLE - replace with NISR SAS
+Rubavu,Irish potato,35,SAMPLE - replace with NISR SAS
+Rubavu,Beans,30,SAMPLE - replace with NISR SAS
+Rubavu,Maize,20,SAMPLE - replace with NISR SAS
+Rubavu,Banana,15,SAMPLE - replace with NISR SAS
+Ruhango,Cassava,35,SAMPLE - replace with NISR SAS
+Ruhango,Beans,30,SAMPLE - replace with NISR SAS
+Ruhango,Maize,20,SAMPLE - replace with NISR SAS
+Ruhango,Soybean,15,SAMPLE - replace with NISR SAS
+Rulindo,Beans,35,SAMPLE - replace with NISR SAS
+Rulindo,Maize,30,SAMPLE - replace with NISR SAS
+Rulindo,Irish potato,20,SAMPLE - replace with NISR SAS
+Rulindo,Banana,15,SAMPLE - replace with NISR SAS
+Rusizi,Beans,30,SAMPLE - replace with NISR SAS
+Rusizi,Cassava,25,SAMPLE - replace with NISR SAS
+Rusizi,Rice,25,SAMPLE - replace with NISR SAS
+Rusizi,Maize,20,SAMPLE - replace with NISR SAS
+Rutsiro,Beans,35,SAMPLE - replace with NISR SAS
+Rutsiro,Irish potato,30,SAMPLE - replace with NISR SAS
+Rutsiro,Maize,20,SAMPLE - replace with NISR SAS
+Rutsiro,Wheat,15,SAMPLE - replace with NISR SAS
+Rwamagana,Maize,30,SAMPLE - replace with NISR SAS
+Rwamagana,Beans,30,SAMPLE - replace with NISR SAS
+Rwamagana,Banana,25,SAMPLE - replace with NISR SAS
+Rwamagana,Rice,15,SAMPLE - replace with NISR SAS
